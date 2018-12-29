@@ -15,7 +15,7 @@
                     @endif
 
                     @forelse($comments as $comment)
-                        <p><strong>{{ $comment->comment }}</strong> on post <a href="{{ url('posts/'.$comment->post_id) }}">{{ $comment->post }}</a></p>
+                        <p><strong>{{ $comment->comment_body }}</strong> on post <a href="{{ url('posts/'.$comment->post->id) }}">{{ $comment->post->post_title }}</a></p>
                     @empty
                         <p>There are no comments.</p>
                     @endforelse

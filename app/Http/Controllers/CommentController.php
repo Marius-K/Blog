@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
-use App\Post;
 use App\Http\Requests\StorePostComment;
 use Illuminate\Http\Request;
 
@@ -15,7 +13,7 @@ class CommentController extends Controller
 
     public function index()
     {
-        return view('comments', ['comments' => auth()->user()->userComments()]);
+        return view('comments');
     }
 
     public function store(StorePostComment $request, Post $post)

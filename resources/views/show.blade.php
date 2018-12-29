@@ -19,8 +19,8 @@
                         <hr>
                         <div>
                             <h4>Comments</h4>
-                            @forelse ($comments as $comment)
-                                <p><strong>{{ $comment->user_name }}</strong> wrote <strong>{{ $comment->comment_body }}</strong></p>
+                            @forelse ($post->comments as $comment)
+                                <p><strong>{{ $comment->user->name }}</strong> wrote <strong>{{ $comment->comment_body }}</strong></p>
                                 @empty
                                 <p>There are no comments. Be first!</p>
                             @endforelse

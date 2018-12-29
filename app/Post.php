@@ -8,6 +8,8 @@ class Post extends Model
 {
     protected $guarded = [];
 
+    public $primarykey = 'id';
+
     public function comments()
     {
         return $this->hasMany('App\Comment');

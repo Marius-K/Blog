@@ -25,8 +25,8 @@ class User extends Authenticatable
 
     public function scopeUserComments(){
         return static::comments()
-            ->leftJoin('posts', 'posts.id', '=', 'comments.post_id')
-            ->get(['comment_id', 'comment_body as comment', 'post_id', 'post_title as post']);
+            ->with('post')
+            ->get();
     }
 
 }

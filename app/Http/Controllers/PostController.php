@@ -14,8 +14,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
-        return view('index', ['posts' => $posts]);
+        return view('index');
     }
 
     public function create()
@@ -32,11 +31,11 @@ class PostController extends Controller
         return redirect('posts')->with('status', 'A post has been successfully published!');
     }
 
-    public function show(Post $post)
+    public function show($post)
     {
-        $comments = $post->comments()
-            ->leftJoin('users', 'users.id', '=', 'comments.user_id')
-            ->get(['comment_body', 'name as user_name']);
-        return view('show', ['post' => $post, 'comments' => $comments]);
+        $post = Post::where('id', $post)
+            ->with('comments.user')
+            ->first();
+        return view('show', compact('post'));
     }
 }
